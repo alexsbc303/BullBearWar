@@ -1,0 +1,642 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.bullbearwar.Firebase.TradingMasterActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tradingTtoolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    <TabHost
+        android:id="@+id/TabHost"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TabWidget
+                android:id="@android:id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white">
+
+            </TabWidget>
+
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <LinearLayout
+                    android:id="@+id/Record"
+                    android:padding="3dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+                    <include layout="@layout/fragment_trading_record" />
+
+
+                </LinearLayout>
+
+
+                <ScrollView
+                    android:id="@+id/NewTrade"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/white"
+                        android:orientation="vertical">
+
+
+                        <android.support.v7.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginRight="8dp"
+                            android:layout_marginTop="10dp">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <LinearLayout
+                                    android:id="@+id/ll6"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="20dp"
+                                    android:layout_marginRight="20dp"
+                                    android:layout_marginTop="10dp"
+                                    android:gravity="center_horizontal">
+
+                                    <AutoCompleteTextView
+                                        android:id="@+id/targetStockSym"
+                                        android:layout_width="150dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_alignParentRight="true"
+                                        android:layout_marginRight="5dp"
+                                        android:layout_marginTop="5dp"
+                                        android:hint="Stock Number"
+                                        android:inputType="number"
+                                        android:textColor="#1E7ABD" />
+
+                                    <Button
+                                        android:id="@+id/search"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Search" />
+
+                                </LinearLayout>
+
+                                <RelativeLayout
+                                    android:id="@+id/detailedRelativeLayout"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/ll6"
+                                    android:padding="10dp">
+
+                                    <TextView
+                                        android:id="@+id/QuoteNum"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentLeft="true"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_alignParentTop="true"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_marginTop="10dp"
+                                        android:text="0001.HK"
+                                        android:textColor="#1E7ABD"
+                                        android:textSize="26dp" />
+
+                                    <TextView
+                                        android:id="@+id/QuoteName"
+                                        android:layout_width="191dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@+id/QuoteNum"
+                                        android:layout_marginLeft="10dp"
+                                        android:text="CK Hutchison Holdings Limited"
+                                        android:textColor="#1E7ABD"
+                                        android:textSize="20dp" />
+
+                                    <TextView
+                                        android:id="@+id/LastUpdatedTime"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@+id/QuoteName"
+                                        android:layout_marginLeft="10dp"
+                                        android:text="At close:  4:08PM HKT"
+                                        android:textColor="@color/lightGrey"
+                                        android:textSize="13dp" />
+
+                                    <RelativeLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@+id/LastUpdatedTime"
+                                        android:layout_margin="5dp">
+
+                                        <TextView
+                                            android:id="@+id/currentPrice"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_alignParentTop="true"
+                                            android:layout_marginLeft="5dp"
+                                            android:text="72.400"
+                                            android:textColor="@color/black"
+                                            android:textSize="35dp"
+                                            android:textStyle="bold" />
+
+                                        <TextView
+                                            android:id="@+id/currentPriceChange"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_below="@+id/currentPrice"
+                                            android:layout_marginLeft="5dp"
+                                            android:text="-1.150 (-1.564%)"
+                                            android:textColor="#ff0000"
+                                            android:textSize="20dp" />
+
+                                    </RelativeLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="150dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentRight="true"
+                                        android:layout_centerVertical="true"
+                                        android:orientation="vertical">
+
+                                        <RelativeLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_margin="3dp">
+
+                                            <TextView
+                                                android:id="@+id/PreviousClose"
+                                                android:layout_width="66dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_alignParentLeft="true"
+                                                android:layout_alignParentStart="true"
+                                                android:layout_alignParentTop="true"
+                                                android:text="@string/PreviousClose"
+                                                android:textColor="@color/lightGrey"
+                                                android:textSize="15dp" />
+
+                                            <TextView
+                                                android:id="@+id/PreviousCloseNum"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_alignParentEnd="true"
+                                                android:layout_alignParentRight="true"
+                                                android:layout_centerInParent="true"
+                                                android:text="79.550"
+                                                android:textColor="@color/lightGrey"
+                                                android:textSize="16dp" />
+
+
+                                        </RelativeLayout>
+
+                                        <RelativeLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_margin="3dp">
+
+                                            <TextView
+                                                android:id="@+id/Open"
+                                                android:layout_width="80dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_alignParentLeft="true"
+                                                android:layout_alignParentStart="true"
+                                                android:layout_alignParentTop="true"
+                                                android:text="@string/Open"
+                                                android:textColor="@color/lightGrey"
+                                                android:textSize="15dp" />
+
+                                            <TextView
+                                                android:id="@+id/OpenNum"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_alignParentEnd="true"
+                                                android:layout_alignParentRight="true"
+                                                android:layout_alignParentTop="true"
+                                                android:text="105.70"
+                                                android:textColor="@color/lightGrey"
+                                                android:textSize="16dp" />
+
+
+                                        </RelativeLayout>
+
+                                        <RelativeLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_margin="3dp">
+
+                                            <TextView
+                                                android:id="@+id/High"
+                                                android:layout_width="80dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_alignParentLeft="true"
+                                                android:layout_alignParentStart="true"
+                                                android:layout_alignParentTop="true"
+                                                android:text="@string/High"
+                                                android:textColor="@color/lightGrey"
+                                                android:textSize="15dp" />
+
+                                            <TextView
+                                                android:id="@+id/HighNum"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_alignParentEnd="true"
+                                                android:layout_alignParentRight="true"
+                                                android:layout_alignParentTop="true"
+                                                android:text="105.70"
+                                                android:textColor="@color/lightGrey"
+                                                android:textSize="16dp" />
+
+                                        </RelativeLayout>
+
+                                        <RelativeLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_margin="3dp">
+
+                                            <TextView
+                                                android:id="@+id/Low"
+                                                android:layout_width="80dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_alignParentLeft="true"
+                                                android:layout_alignParentStart="true"
+                                                android:layout_alignParentTop="true"
+                                                android:text="@string/Low"
+                                                android:textColor="@color/lightGrey"
+                                                android:textSize="15dp" />
+
+                                            <TextView
+                                                android:id="@+id/LowNum"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_alignParentEnd="true"
+                                                android:layout_alignParentRight="true"
+                                                android:layout_alignParentTop="true"
+                                                android:text="104.80"
+                                                android:textColor="@color/lightGrey"
+                                                android:textSize="16dp" />
+
+
+                                        </RelativeLayout>
+
+                                        <RelativeLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_margin="3dp">
+
+                                            <TextView
+                                                android:id="@+id/Volumn"
+                                                android:layout_width="80dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_alignParentLeft="true"
+                                                android:layout_alignParentStart="true"
+                                                android:layout_alignParentTop="true"
+                                                android:text="@string/Volume"
+                                                android:textColor="@color/lightGrey"
+                                                android:textSize="15dp" />
+
+                                            <TextView
+                                                android:id="@+id/VolumnNum"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_alignParentEnd="true"
+                                                android:layout_alignParentRight="true"
+                                                android:layout_alignParentTop="true"
+                                                android:text="6.99M"
+                                                android:textColor="@color/lightGrey"
+                                                android:textSize="16dp" />
+
+
+                                        </RelativeLayout>
+
+                                        <RelativeLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_margin="3dp">
+
+                                            <TextView
+                                                android:id="@+id/askPriceLabel"
+                                                android:layout_width="80dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_alignParentLeft="true"
+                                                android:layout_alignParentStart="true"
+                                                android:layout_alignParentTop="true"
+                                                android:text="Ask"
+                                                android:textColor="@color/lightGrey"
+                                                android:textSize="15dp" />
+
+                                            <TextView
+                                                android:id="@+id/askPriceNum"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_alignParentEnd="true"
+                                                android:layout_alignParentRight="true"
+                                                android:layout_alignParentTop="true"
+                                                android:text="6.99M"
+                                                android:textColor="@color/lightGrey"
+                                                android:textSize="16dp" />
+
+                                        </RelativeLayout>
+
+
+                                        <RelativeLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_margin="3dp">
+
+                                            <TextView
+                                                android:id="@+id/bidPriceLabel"
+                                                android:layout_width="80dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_alignParentLeft="true"
+                                                android:layout_alignParentStart="true"
+                                                android:layout_alignParentTop="true"
+                                                android:text="Bid"
+                                                android:textColor="@color/lightGrey"
+                                                android:textSize="15dp" />
+
+                                            <TextView
+                                                android:id="@+id/bidPriceNum"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_alignParentEnd="true"
+                                                android:layout_alignParentRight="true"
+                                                android:layout_alignParentTop="true"
+                                                android:text="6.99M"
+                                                android:textColor="@color/lightGrey"
+                                                android:textSize="16dp" />
+
+                                        </RelativeLayout>
+                                    </LinearLayout>
+
+                                </RelativeLayout>
+
+                            </RelativeLayout>
+
+
+                        </android.support.v7.widget.CardView>
+
+                        <android.support.v7.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginRight="8dp"
+                            android:layout_marginTop="5dp">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+
+                                <RadioGroup
+                                    android:id="@+id/radioGP"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+
+                                        <RadioButton
+                                            android:id="@+id/askNowRB"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:onClick="onRadioButtonClicked"
+                                            android:text="Buy now" />
+
+                                        <RadioButton
+                                            android:id="@+id/bidNowRB"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:onClick="onRadioButtonClicked"
+                                            android:text="Sell now" />
+
+                                    </LinearLayout>
+
+
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+
+                                        <RadioButton
+                                            android:id="@+id/autoAskRB"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:onClick="onRadioButtonClicked"
+                                            android:text="Auto buy" />
+
+                                        <RadioButton
+                                            android:id="@+id/autoBidRB"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:onClick="onRadioButtonClicked"
+                                            android:text="Auto sell" />
+
+                                    </LinearLayout>
+
+                                </RadioGroup>
+
+                                <FrameLayout
+                                    android:id="@+id/frameLayout"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_below="@+id/radioGP" />
+
+                            </RelativeLayout>
+                        </android.support.v7.widget.CardView>
+                    </LinearLayout>
+                </ScrollView>
+
+
+
+
+                <LinearLayout
+                    android:id="@+id/Wallet"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+
+                    <android.support.v7.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+                        <RelativeLayout
+                            android:id="@+id/rlparent"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:id="@+id/displayName"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginTop="10dp"
+                                android:text="Rocket"
+                                android:textColor="@color/blue"
+                                android:textSize="30sp" />
+
+                            <com.github.mikephil.charting.charts.PieChart
+                                android:id="@+id/pieChart"
+                                android:layout_width="241dp"
+                                android:layout_height="200dp"
+                                android:layout_marginTop="40dp"
+                                android:layout_marginBottom="5dp"/>
+
+                            <LinearLayout
+                                android:layout_marginTop="20dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginRight="10dp"
+                                android:gravity="right"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/StockValue"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/StockValue"
+                                    android:textColor="@color/lightGrey"
+                                    android:textStyle="bold"
+                                    android:textSize="20sp" />
+
+
+                                <TextView
+                                    android:id="@+id/stockValue"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/StockValue"
+                                    android:text="700,000"
+                                    android:textColor="@color/blue"
+                                    android:textSize="30sp" />
+
+                                <TextView
+                                    android:id="@+id/CashFlow"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="@string/CashFlow"
+                                    android:textColor="@color/lightGrey"
+                                    android:textStyle="bold"
+                                    android:textSize="20sp" />
+
+                                <TextView
+                                    android:id="@+id/cashFlow"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="300,000"
+                                    android:textColor="@color/blue"
+                                    android:textSize="30sp" />
+
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:text="Total Asset"
+                                    android:textColor="@color/lightGrey"
+                                    android:textStyle="bold"
+                                    android:textSize="20sp" />
+
+                                <TextView
+                                    android:id="@+id/totalAsset"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="1,000,000"
+                                    android:textColor="@color/blue"
+                                    android:textSize="30sp" />
+                            </LinearLayout>
+
+                        </RelativeLayout>
+
+                    </android.support.v7.widget.CardView>
+
+                    <android.support.v7.widget.CardView
+                        android:layout_marginTop="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/PurchasedStock"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Holding Stock"
+                                android:textColor="@color/lightGrey"
+                                android:textStyle="bold"
+                                android:layout_marginLeft="10dp"
+                                android:textSize="25dp" />
+
+                            <include layout="@layout/profile_activity" />
+
+
+                        </LinearLayout>
+
+
+                    </android.support.v7.widget.CardView>
+
+
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:id="@+id/autotrade"
+                    android:padding="3dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+                    <include layout="@layout/fragment_at_trading_record" />
+
+
+                </LinearLayout>
+
+
+
+            </FrameLayout>
+
+        </LinearLayout>
+    </TabHost>
+
+</LinearLayout>

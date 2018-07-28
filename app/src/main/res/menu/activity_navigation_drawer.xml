@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_menu_home"
+            android:title="Home" />
+        <item
+            android:id="@+id/nav_search"
+            android:icon="@drawable/ic_search_black_24dp"
+            android:title="Search" />
+        <item
+            android:id="@+id/nav_record"
+            android:icon="@drawable/ic_menu_searchrecord"
+            android:title="Record" />
+        <item
+            android:id="@+id/nav_smarttrader"
+            android:icon="@drawable/ic_menu_smarttrader"
+            android:title="Smart Trader" />
+        <item
+            android:id="@+id/nav_news"
+            android:icon="@drawable/ic_menu_news"
+            android:title="News" />
+        <item
+            android:id="@+id/nav_top10"
+            android:icon="@drawable/ic_menu_top10"
+            android:title="Top 10" />
+        <item
+            android:id="@+id/nav_currency"
+            android:icon="@drawable/ic_menu_currency"
+            android:title="Currency Converter" />
+        <item
+            android:id="@+id/nav_chatroom"
+            android:icon="@drawable/ic_send"
+            android:title="Chatroom" />
+        <item
+            android:id="@+id/nav_setting"
+            android:icon="@drawable/ic_menu_setting"
+            android:title="Settings" />
+    </group>
+
+</menu>

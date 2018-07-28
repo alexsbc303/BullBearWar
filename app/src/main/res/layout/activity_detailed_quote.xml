@@ -1,0 +1,815 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="?attr/backgroundcolor"
+    android:weightSum="10"
+    tools:context="com.example.bullbearwar.MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp">
+
+        <TextView
+            android:id="@+id/QuoteNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
+            android:textColor="?attr/textcolor"
+            android:text="0001.HK"
+            android:textSize="26dp" />
+
+        <TextView
+            android:id="@+id/QuoteName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/QuoteNum"
+            android:layout_marginLeft="10dp"
+            android:text="CK Hutchison Holdings Limited"
+            android:textColor="?attr/textcolor"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/LastUpdatedTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/QuoteName"
+            android:layout_marginLeft="10dp"
+            android:text="At close:  4:08PM HKT"
+            android:textColor="?attr/textcolor"
+            android:textSize="13dp" />
+
+        <LinearLayout
+            android:id="@+id/ll1"
+            android:layout_marginTop="15dp"
+            android:layout_alignParentRight="true"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/marketLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:text="Market: "
+                android:textColor="?attr/textcolor"/>
+
+            <Spinner
+                android:id="@+id/marketSpinner"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content">
+
+            </Spinner>
+
+        </LinearLayout>
+
+        <AutoCompleteTextView
+            android:id="@+id/autoInputNum"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/ll1"
+            android:layout_marginRight="5dp"
+            android:hint="Stock Sym"
+
+            android:textColor="#1E7ABD" />
+
+        <Button
+            android:id="@+id/searchBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="search"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.578"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="16dp" />
+
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:alignmentMode="alignMargins"
+            android:columnCount="2"
+            android:columnOrderPreserved="false"
+            android:rowCount="2">
+
+            <android.support.v7.widget.CardView
+                android:layout_width="130dp"
+                android:layout_height="122dp"
+                android:layout_columnWeight="2"
+                android:layout_marginBottom="6dp"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="6dp"
+                android:layout_rowWeight="1"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="9dp"
+                android:background="?attr/backgroundcolor">
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:background="?attr/backgroundcolor">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp" >
+
+                        <TextView
+                            android:id="@+id/currentPrice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:text="72.400"
+                            android:textSize="35dp"
+                            android:textColor="?attr/textcolor"
+                            android:textStyle="bold"
+                            android:layout_alignParentTop="true"/>
+
+                        <TextView
+                            android:id="@+id/currentPriceChange"
+                            android:layout_marginLeft="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="-1.150 (-1.564%)"
+                            android:textColor="#ff0000"
+                            android:textSize="20dp"
+                            android:layout_below="@+id/currentPrice"/>
+
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp">
+
+                        <TextView
+                            android:id="@+id/PreviousClose"
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:text="@string/PreviousClose"
+                            android:textColor="@color/lightGrey"
+                            android:textSize="20dp" />
+
+                        <TextView
+                            android:id="@+id/PreviousCloseNum"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerInParent="true"
+                            android:text="79.550"
+                            android:textColor="@color/lightGrey"
+                            android:textSize="16dp" />
+
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp">
+
+                        <TextView
+                            android:id="@+id/Open"
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:text="@string/Open"
+                            android:textColor="@color/lightGrey"
+                            android:textSize="20dp" />
+
+                        <TextView
+                            android:id="@+id/OpenNum"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentTop="true"
+                            android:text="105.70"
+                            android:textColor="@color/lightGrey"
+                            android:textSize="16dp" />
+
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp">
+
+                        <TextView
+                            android:id="@+id/High"
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:text="@string/High"
+                            android:textColor="@color/lightGrey"
+                            android:textSize="20dp" />
+
+                        <TextView
+                            android:id="@+id/HighNum"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentTop="true"
+                            android:text="105.70"
+                            android:textColor="@color/lightGrey"
+                            android:textSize="16dp" />
+
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp">
+
+                        <TextView
+                            android:id="@+id/Low"
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:text="@string/Low"
+                            android:textColor="@color/lightGrey"
+                            android:textSize="20dp" />
+
+                        <TextView
+                            android:id="@+id/LowNum"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentTop="true"
+                            android:text="104.80"
+                            android:textColor="@color/lightGrey"
+                            android:textSize="16dp" />
+
+
+                    </RelativeLayout>
+
+
+                    <!--<RelativeLayout-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_margin="5dp">-->
+
+                        <!--<TextView-->
+                            <!--android:id="@+id/AvgPrice"-->
+                            <!--android:layout_width="89dp"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_alignParentLeft="true"-->
+                            <!--android:layout_alignParentStart="true"-->
+                            <!--android:layout_alignParentTop="true"-->
+                            <!--android:text="@string/AvgPrice"-->
+                            <!--android:textColor="@color/lightGrey"-->
+                            <!--android:textSize="20dp" />-->
+
+                        <!--<TextView-->
+                            <!--android:id="@+id/AvgPriceNum"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_alignParentEnd="true"-->
+                            <!--android:layout_alignParentRight="true"-->
+                            <!--android:layout_alignParentTop="true"-->
+                            <!--android:text="105.70"-->
+                            <!--android:textColor="@color/lightGrey"-->
+                            <!--android:textSize="16dp" />-->
+                        <!---->
+                    <!--</RelativeLayout>-->
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp">
+
+                        <TextView
+                            android:id="@+id/Volumn"
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:text="@string/Volume"
+                            android:textColor="@color/lightGrey"
+                            android:textSize="20dp" />
+
+                        <TextView
+                            android:id="@+id/VolumnNum"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentTop="true"
+                            android:text="6.99M"
+                            android:textColor="@color/lightGrey"
+                            android:textSize="16dp" />
+
+
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="300dp"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="4dp"
+                        android:layout_marginTop="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="?attr/textcolor"
+                            android:text="1 day line chart: "
+                            android:textSize="15dp"
+                            android:layout_marginBottom="10dp"/>
+                        <include layout="@layout/candle_stick" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/resultTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:text="TextView"
+                        android:visibility="invisible" />
+
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="6dp"
+                android:layout_rowWeight="1"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="9dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="?attr/backgroundcolor"
+                    android:orientation="vertical">
+
+                    <!--<ImageView-->
+                    <!--android:id="@+id/candlestick"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="220dp"-->
+                    <!--android:layout_alignEnd="@+id/QuoteNum"-->
+                    <!--android:layout_alignParentTop="true"-->
+                    <!--android:layout_alignRight="@+id/QuoteNum"-->
+                    <!--android:layout_gravity="center_horizontal"-->
+                    <!--android:layout_marginEnd="19dp"-->
+                    <!--android:layout_marginRight="19dp"-->
+                    <!--android:src="@drawable/candlestick" />-->
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp">
+
+
+                        <TextView
+                            android:id="@+id/Bid"
+                            android:layout_width="90dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:text="@string/Bid"
+                            android:textColor="@color/lightGrey"
+                            android:textSize="20dp" />
+
+                        <TextView
+                            android:id="@+id/BidNum"
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerInParent="true"
+                            android:text="79.650 x 0"
+                            android:textColor="@color/lightGrey"
+                            android:textSize="16dp" />
+
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp">
+
+
+                        <TextView
+                            android:id="@+id/Ask"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:text="@string/Ask"
+                            android:textColor="@color/lightGrey"
+                            android:textSize="20dp" />
+
+                        <TextView
+                            android:id="@+id/AskNum"
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerInParent="true"
+                            android:text="79.700 x 0"
+                            android:textColor="@color/lightGrey"
+                            android:textSize="16dp" />
+
+
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp">
+
+
+                        <TextView
+                            android:id="@+id/DayRange"
+                            android:layout_width="90dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:text="@string/DayRange"
+                            android:textColor="@color/lightGrey"
+                            android:textSize="20dp" />
+
+                        <TextView
+                            android:id="@+id/DayRangeNum"
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerInParent="true"
+                            android:text="79.650 x 0"
+                            android:textColor="@color/lightGrey"
+                            android:textSize="16dp" />
+
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp">
+
+
+                        <TextView
+                            android:id="@+id/WeekRange"
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:text="@string/WeekRange"
+                            android:textColor="@color/lightGrey"
+                            android:textSize="20dp" />
+
+                        <TextView
+                            android:id="@+id/WeekRangeNum"
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerInParent="true"
+                            android:text="618.800-868.00"
+                            android:textColor="@color/lightGrey"
+                            android:textSize="16dp" />
+
+
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp">
+
+
+                        <TextView
+                            android:id="@+id/AvgVolumn"
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:text="@string/AvgVolume"
+                            android:textColor="@color/lightGrey"
+                            android:textSize="20dp" />
+
+                        <TextView
+                            android:id="@+id/AvgVolumnNum"
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerInParent="true"
+                            android:text="33,440,139"
+                            android:textColor="@color/lightGrey"
+                            android:textSize="16dp" />
+
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp">
+
+
+                        <TextView
+                            android:id="@+id/MarketCap"
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:text="@string/MarketCap"
+                            android:textColor="@color/lightGrey"
+                            android:textSize="20dp" />
+
+                        <TextView
+                            android:id="@+id/MarketCapNum"
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerInParent="true"
+                            android:text="71.587T"
+                            android:textColor="@color/lightGrey"
+                            android:textSize="20dp" />
+
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp">
+
+
+                        <TextView
+                            android:id="@+id/Beta"
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:text="@string/Beta"
+                            android:textColor="@color/lightGrey"
+                            android:textSize="20dp" />
+
+                        <TextView
+                            android:id="@+id/BetaNum"
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerInParent="true"
+                            android:text="N/A"
+                            android:textColor="@color/lightGrey"
+                            android:textSize="16dp" />
+
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp">
+
+
+                        <TextView
+                            android:id="@+id/PERation"
+                            android:layout_width="89dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:text="@string/PERation"
+                            android:textColor="@color/lightGrey"
+                            android:textSize="20dp" />
+
+                        <TextView
+                            android:id="@+id/PERationNum"
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerInParent="true"
+                            android:text="165.94"
+                            android:textColor="@color/lightGrey"
+                            android:textSize="16dp" />
+
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp">
+
+
+                        <TextView
+                            android:id="@+id/Eps"
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:text="@string/Eps"
+                            android:textColor="@color/lightGrey"
+                            android:textSize="20dp" />
+
+                        <TextView
+                            android:id="@+id/EpsNum"
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerInParent="true"
+                            android:text="0.480"
+                            android:textColor="@color/lightGrey"
+                            android:textSize="16dp" />
+
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp">
+
+
+                        <TextView
+                            android:id="@+id/EraningDate"
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:text="@string/Earning"
+                            android:textColor="@color/lightGrey"
+                            android:textSize="20dp" />
+
+                        <TextView
+                            android:id="@+id/EraningDateNum"
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerInParent="true"
+                            android:text="N/A"
+                            android:textColor="@color/lightGrey"
+                            android:textSize="16dp" />
+
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp">
+
+
+                        <TextView
+                            android:id="@+id/ForwardDividend"
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:text="@string/FDandY"
+                            android:textColor="@color/lightGrey"
+                            android:textSize="20dp" />
+
+                        <TextView
+                            android:id="@+id/ForwardDividendNum"
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentTop="true"
+                            android:text="3.99(5.00%)"
+                            android:textColor="@color/lightGrey"
+                            android:textSize="16dp" />
+
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp">
+
+
+                        <TextView
+                            android:id="@+id/EX-DiviendDate"
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:text="@string/ExDividendDate"
+                            android:textColor="@color/lightGrey"
+                            android:textSize="20dp" />
+
+                        <TextView
+                            android:id="@+id/EX-DiviendDateNum"
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentTop="true"
+                            android:text="2017-02-23"
+                            android:textColor="@color/lightGrey"
+                            android:textSize="16dp" />
+
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp">
+
+
+                        <TextView
+                            android:id="@+id/OneYearEst"
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:text="@string/OneYearTGE"
+                            android:textColor="@color/lightGrey"
+                            android:textSize="20dp" />
+
+                        <TextView
+                            android:id="@+id/OneYearEstNum"
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentTop="true"
+                            android:text="81.59"
+                            android:textColor="@color/lightGrey"
+                            android:textSize="16dp" />
+
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+
+            </android.support.v7.widget.CardView>
+
+
+        </GridLayout>
+    </ScrollView>
+
+
+</LinearLayout>

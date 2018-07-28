@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+    <LinearLayout
+        android:id="@+id/sellLinearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Current Bid Price in Market: "
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/bidPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0.00"
+                android:textColor="@color/blue"
+                android:textSize="30dp" />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/sellTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Trading Time" />
+
+        <TextView
+            android:textSize="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sell Volume: "/>
+
+        <EditText
+            android:id="@+id/sellShares"
+            android:layout_width="168dp"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:maxLength="8" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total Price: "
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/totalSellPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textColor="@color/blue"
+            android:textSize="25dp" />
+
+        <Button
+            android:id="@+id/sellNowBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Sell" />
+    </LinearLayout>
+</RelativeLayout>

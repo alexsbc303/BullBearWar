@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="?attr/backgroundcolor"
+    android:padding="20dp"
+    tools:context="com.example.bullbearwar.CurrencyConverter.ConversionActivity">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        android:text="HKD to XXX"
+        android:textColor="?attr/textcolor"
+        android:textSize="40sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvSubTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="26sp"
+        android:text="[  1 : xxxx  ]"
+        android:textColor="?attr/textcolor"
+        android:gravity="center"
+        android:layout_marginBottom="20dp"
+        android:textStyle="italic" />
+
+    <LinearLayout
+        android:background="?attr/backgroundcolor"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:text="   HKD: "
+            android:textColor="?attr/textcolor"
+            android:textSize="32sp" />
+        <EditText
+            android:id="@+id/etInput"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="right"
+            android:textColor="?attr/textcolor"
+            android:inputType="numberDecimal"
+            android:textSize="32sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:background="?attr/backgroundcolor"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tvOutputName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="32sp"
+            android:textColor="?attr/textcolor"
+            android:text="   XXX: " />
+        <TextView
+            android:textSize="32sp"
+            android:textColor="?attr/textcolor"
+            android:id="@+id/tvOutputRate"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:gravity="right"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btnCalculate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Calculate"
+            android:textSize="28sp" />
+    </LinearLayout>
+</LinearLayout>
